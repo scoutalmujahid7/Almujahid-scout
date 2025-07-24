@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Uji Coba Sandi Morse</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://i.imgur.com/BV9fwqD.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      padding-top: 60px;
+    }
+
+    .morse-box {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,255,255,0.2);
+      text-align: center;
+    }
+
+    .morse-anim {
+      font-size: 40px;
+      margin-bottom: 20px;
+      letter-spacing: 20px;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    input, button {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      margin: 10px;
+    }
+
+    input {
+      width: 60px;
+      text-align: center;
+    }
+
+    button {
+      background: #00ffee;
+      color: black;
+      cursor: pointer;
+    }
+
+    #hasil, #skor, #timer {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    #jawaban, #cekBtn {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="morse-box">
+    <h1>💡 Tebak Huruf Sandi Morse</h1>
+    <div id="timer">⏳ 30 detik</div>
+    <div id="animasi" class="morse-anim">Tekan "Mulai"</div>
+
+    <input type="text" id="jawaban" placeholder="?" maxlength="1" />
+    <br>
+    <button id="startBtn" onclick="mulaiUjian()">Mulai</button>
+    <button id="cekBtn" onclick="cekJawaban()">Cek</button>
+
+    <div id="hasil"></div>
+    <div id="skor"></div>
+  </div>
+
+  <!-- Suara bip -->
+  <audio id="bip" src="https://files.catbox.moe/5cazfs.mp3" preload="auto"></audio>
+
+  <script>
+    const morse = {
+      A: ".-", B: "-...", C: "-.-.", D: "-..", E: ".", F: "..-.",
+      G: "--.", H: "....", I: "..", J: ".---", K: "-.-", L: ".-..",
+      M: "--", N: "-.", O: "---", P: ".--.", Q: "--.-", R: ".-.",
+      S: "...", T: "-", U: "..-", V: "...-", W: ".--", X: "-..-",
+      Y: "-.--", Z: "--..",
+      0: "-----", 1: ".----", 2: "..---", 3: "...--", 4: "....-",
+      5: ".....", 6: "-....", 7: "--...", 8: "---..", 9: "----."
+    };
+
+    let hurufSekarang = '', morseSekarang = '';
+    let soalKe = 0, skor = 0, timer;
+    const totalSoal = 10;
+    const waktuTotal = 30; // detik
+
+    function mulaiUjian() {
+      soalKe = 0;
+      skor = 0;
+      document.getElementById('startBtn').style.display = 'none';
+      document.getElementById('jawaban').style.display = 'inline-block';
+      document.getElementById('cekBtn').style.display = 'inline-block';
+      document.getElementById('skor').innerText = '';
+      mulaiTimer(waktuTotal);
+      soalBaru();
+    }
+
+    function mulaiTimer(detik) {
+      let sisa = detik;
+      document.getElementById('timer').innerText = `⏳ ${sisa} detik`;
+
+      timer = setInterval(() => {
+        sisa--;
+        document.getElementById('timer').innerText = `⏳ ${sisa} detik`;
+        if (sisa <= 0) {
+          clearInterval(timer);
+          akhirUjian();
+        }
+      }, 1000);
+    }
+
+    function akhirUjian() {
+      document.getElementById('animasi').innerText = '⏹️ Waktu Habis!';
+      document.getElementById('hasil').innerText = '';
+      document.getElementById('jawaban').style.display = 'none';
+      document.getElementById('cekBtn').style.display = 'none';
+      document.getElementById('skor').innerText = `🎯 Skor Akhir: ${skor}/${totalSoal}`;
+      document.getElementById('startBtn').style.display = 'inline-block';
+      document.getElementById('startBtn').innerText = 'Ulangi';
+    }
+
+    function soalBaru() {
+      const keys = Object.keys(morse);
+      hurufSekarang = keys[Math.floor(Math.random() * keys.length)];
+      morseSekarang = morse[hurufSekarang];
+
+      tampilkanAnimasi(morseSekarang);
+      document.getElementById('jawaban').value = '';
+      document.getElementById('hasil').innerText = '';
+    }
+
+    async function tampilkanAnimasi(kode) {
+      const animasi = document.getElementById('animasi');
+      const bip = document.getElementById('bip');
+
+      const simbolMorse = kode.replace(/\./g, '•').replace(/-/g, '—');
+      animasi.innerText = simbolMorse;
+
+      for (let i = 0; i < 3; i++) {
+        animasi.style.opacity = '0';
+        bip.currentTime = 0;
+        bip.play();
+        await new Promise(r => setTimeout(r, 200));
+        animasi.style.opacity = '1';
+        await new Promise(r => setTimeout(r, 200));
+      }
+    }
+
+    function cekJawaban() {
+      const input = document.getElementById('jawaban').value.toUpperCase();
+      const hasil = document.getElementById('hasil');
+
+      if (input === hurufSekarang) {
+        skor++;
+        hasil.innerText = "✅ Benar!";
+      } else {
+        hasil.innerText = `❌ Salah, Jawaban: ${hurufSekarang}`;
+      }
+
+      soalKe++;
+      if (soalKe < totalSoal) {
+        setTimeout(soalBaru, 1000);
+      } else {
+        clearInterval(timer);
+        akhirUjian();
+      }
+    }
+  </script>
+</body>
+</html>

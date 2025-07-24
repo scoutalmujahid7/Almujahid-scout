@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sandi Morse</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00e0ff;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px auto;
+      background-color: rgba(255,255,255,0.05);
+      border: 1px solid #00e0ff;
+    }
+
+    th, td {
+      border: 1px solid #00e0ff;
+      padding: 10px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    th {
+      background-color: #00e0ff;
+      color: black;
+    }
+
+    .morse-anim {
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+    }
+
+    .dot, .dash {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: white;
+      animation: blink 1s infinite alternate;
+    }
+
+    .dash {
+      width: 30px;
+      border-radius: 5px;
+    }
+
+    @keyframes blink {
+      from { opacity: 0.3; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .back {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .back a {
+      color: #00e0ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sandi Morse Internasional</h1>
+
+  <div class="table-container">
+    <table>
+      <tr><th>Huruf</th><th>Morse</th><th>Animasi</th></tr>
+      <tr><td>A</td><td>• —</td><td><div class="morse-anim"><div class="dot"></div><div class="dash"></div></div></td></tr>
+      <tr><td>B</td><td>— • • •</td><td><div class="morse-anim"><div class="dash"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></td></tr>
+      <tr><td>C</td><td>— • — •</td><td><div class="morse-anim"><div class="dash"></div><div class="dot"></div><div class="dash"></div><div class="dot"></div></div></td></tr>
+      <tr><td>D</td><td>— • •</td><td><div class="morse-anim"><div class="dash"></div><div class="dot"></div><div class="dot"></div></div></td></tr>
+      <tr><td>E</td><td>•</td><td><div class="morse-anim"><div class="dot"></div></div></td></tr>
+      <tr><td>F</td><td>• • — •</td><td><div class="morse-anim"><div class="dot"></div><div class="dot"></div><div class="dash"></div><div class="dot"></div></div></td></tr>
+      <tr><td>G</td><td>— — •</td><td><div class="morse-anim"><div class="dash"></div><div class="dash"></div><div class="dot"></div></div></td></tr>
+      <tr><td>H</td><td>• • • •</td><td><div class="morse-anim"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></td></tr>
+      <tr><td>I</td><td>• •</td><td><div class="morse-anim"><div class="dot"></div><div class="dot"></div></div></td></tr>
+      <tr><td>J</td><td>• — — —</td><td><div class="morse-anim"><div class="dot"></div><div class="dash"></div><div class="dash"></div><div class="dash"></div></div></td></tr>
+      <tr><td>K</td><td>— • —</td><td><div class="morse-anim"><div class="dash"></div><div class="dot"></div><div class="dash"></div></div></td></tr>
+      <tr><td>L</td><td>• — • •</td><td><div class="morse-anim"><div class="dot"></div><div class="dash"></div><div class="dot"></div><div class="dot"></div></div></td></tr>
+      <tr><td>M</td><td>— —</td><td><div class="morse-anim"><div class="dash"></div><div class="dash"></div></div></td></tr>
+      <tr><td>N</td><td>— •</td><td><div class="morse-anim"><div class="dash"></div><div class="dot"></div></div></td></tr>
+      <tr><td>O</td><td>— — —</td><td><div class="morse-anim"><div class="dash"></div><div class="dash"></div><div class="dash"></div></div></td></tr>
+      <tr><td>P</td><td>• — — •</td><td><div class="morse-anim"><div class="dot"></div><div class="dash"></div><div class="dash"></div><div class="dot"></div></div></td></tr>
+      <tr><td>Q</td><td>— — • —</td><td><div class="morse-anim"><div class="dash"></div><div class="dash"></div><div class="dot"></div><div class="dash"></div></div></td></tr>
+      <tr><td>R</td><td>• — •</td><td><div class="morse-anim"><div class="dot"></div><div class="dash"></div><div class="dot"></div></div></td></tr>
+      <tr><td>S</td><td>• • •</td><td><div class="morse-anim"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></td></tr>
+      <tr><td>T</td><td>—</td><td><div class="morse-anim"><div class="dash"></div></div></td></tr>
+      <tr><td>U</td><td>• • —</td><td><div class="morse-anim"><div class="dot"></div><div class="dot"></div><div class="dash"></div></div></td></tr>
+      <tr><td>V</td><td>• • • —</td><td><div class="morse-anim"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dash"></div></div></td></tr>
+      <tr><td>W</td><td>• — —</td><td><div class="morse-anim"><div class="dot"></div><div class="dash"></div><div class="dash"></div></div></td></tr>
+      <tr><td>X</td><td>— • • —</td><td><div class="morse-anim"><div class="dash"></div><div class="dot"></div><div class="dot"></div><div class="dash"></div></div></td></tr>
+      <tr><td>Y</td><td>— • — —</td><td><div class="morse-anim"><div class="dash"></div><div class="dot"></div><div class="dash"></div><div class="dash"></div></div></td></tr>
+      <tr><td>Z</td><td>— — • •</td><td><div class="morse-anim"><div class="dash"></div><div class="dash"></div><div class="dot"></div><div class="dot"></div></div></td></tr>
+    </table>
+  </div>
+
+  <div class="back">
+    <a href="index.html">← Kembali ke Halaman Utama</a>
+  </div>
+</body>
+</html>

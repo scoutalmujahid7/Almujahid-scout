@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kritik & Saran</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://i.imgur.com/BV9fwqD.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      padding: 30px;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.9); /* transparan putih */
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00aaff;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 2px solid #00bfff;
+      border-radius: 8px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      width: 100%;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #009ace;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #00aaff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <div class="container">
+    <h2><span id="typed-text"></span></h2>
+
+    <script>
+      var typed = new Typed("#typed-text", {
+        strings: [
+          "Silahkan berikan saran dan kritik anda",
+          "Tentang website ini.",
+          "Jika ada masalah akan segera di perbaiki!"
+        ],
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 1500,
+        loop: true
+      });
+    </script>
+
+    <form action="https://formsubmit.co/adendenra8@gmail.com" method="POST">
+      <input type="text" name="name" placeholder="Nama (boleh dikosongkan)">
+      <textarea name="message" placeholder="Tulis kritik atau saran..." required></textarea>
+      <input type="hidden" name="_captcha" value="false">
+      <button type="submit">Kirim</button>
+    </form>
+    <a href="index.html" class="back">← Kembali ke halaman utama</a>
+  </div>
+</body>
+</html>

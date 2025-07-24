@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scout Al-mujahid</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<p style="text-align: center; font-family: Poppins, sans-serif;">
+  Scout Al-mujahid 🔥  <span id="counter">...</span> 
+</p>
+
+<script>
+  fetch('https://api.countapi.xyz/update/denznotdev/visit/?amount=1')
+    .then(res => res.json())
+    .then(res => {
+      document.getElementById('counter').innerText = res.value;
+    });
+</script>
+  <div class="container">
+    <!-- Logo -->
+    <img src="denz.jpg" alt="Logo Pramuka" class="logo">
+
+    <!-- Tombol-tombol -->
+    <div class="button-container">
+      <a href="struktur.html" class="menu-button">STRUKTUR</a>
+      <a href="galeri.html" class="menu-button">GALERY</a>
+      <a href="saran.html" class="menu-button">SARAN/KRITIK</a>
+      <a href="morse.html" class="menu-button">SANDI MORSE</a>
+      <a href="uji.html" class="menu-button">TES SANDI MORSE</a>
+    </div>
+    
+    <!-- Lagu -->
+    <audio controls style="margin-top: 25px;" class="audio-player">
+      <source src="rela.mp3" type="audio/mpeg">
+      Browser Anda tidak mendukung pemutar audio.
+    </audio>
+  </div>
+</body>
+</html>
+<a href="https://www.tiktok.com/@almujahid239" target="_blank" class="menu-button">
+  <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" style="width:20px; vertical-align:middle; margin-right:5px;">
+  TIKTOK 
+</a>
+<a href="darma.html" class="menu-button">DASA DARMA</a>
+    </div>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galeri scout almujahid</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+  background-image: url('https://i.imgur.com/BV9fwqD.jpeg'); /* ganti dengan link fotomu */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+       }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #00ffff;
+      text-shadow: 0 0 10px #0ff;
+    }
+
+    .gallery-vertical {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .gallery-vertical img {
+      width: 90%;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-vertical img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+    }
+
+    /* Lightbox overlay */
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 0 30px cyan;
+    }
+
+    /* Musik & tombol kembali */
+    .music-section {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .music-section audio {
+      width: 80%;
+      max-width: 500px;
+      margin-bottom: 20px;
+      outline: none;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #00ffff;
+      color: #000;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #00ffff;
+    }
+
+    .back-button:hover {
+      background: #0ff;
+      box-shadow: 0 0 20px #0ff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Galeri almujahid</h1>
+  <div class="gallery-vertical">
+    <img src="https://i.imgur.com/0TwjxlT.jpeg" alt="Foto 1">
+    <img src="https://i.imgur.com/0TwjxlT.jpeg" alt="Foto 1">
+    <img src="https://i.imgur.com/qmk4eIJ.jpeg" alt="Foto 2">
+    <img src="https://i.imgur.com/7HSSJ9z.jpeg" alt="Foto 3">
+    <img src="https://i.imgur.com/DCbVTQn.jpeg" alt="Foto 4">
+    <img src="https://i.imgur.com/I1HNCkA.jpeg" alt="Foto 5">
+    <img src="https://imgur.com/a/rtRgMW2" alt="Foto 6">
+  </div>
+  <!-- Musik dan Tombol Kembali -->
+  <div class="music-section">
+<audio autoplay loop>
+  <source src="bergema.mp3" type="audio/mpeg">
+  Browser kamu tidak mendukung audio.
+</audio>
+    <br>
+    <a class="back-button" href="index.html">Kembali ke Halaman Utama</a>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const galleryImgs = document.querySelectorAll('.gallery-vertical img');
+
+    galleryImgs.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
